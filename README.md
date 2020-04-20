@@ -1,4 +1,4 @@
-# OS2Web Meetings SBSYS Drupal module
+# OS2Web Meetings SBSYS Drupal module [![Build Status](https://travis-ci.org/OS2web/os2web_meetings_sbsys.svg?branch=master)](https://travis-ci.org/OS2web/os2web_meetings_sbsys)
 
 ## Module purpose
 
