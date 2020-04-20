@@ -16,6 +16,7 @@ use Drupal\os2web_meetings\Plugin\migrate\source\MeetingsDirectory;
  * )
  */
 class MeetingsDirectorySbsys extends MeetingsDirectory {
+
   /**
    * {@inheritdoc}
    */
@@ -248,6 +249,9 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
     return $dateTime->getTimestamp();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function postImport(MigrateImportEvent $event) {
     parent::postImport($event);
 

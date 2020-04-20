@@ -25,4 +25,3 @@ function os2web_meetings_sbsys_form_os2web_meetings_settings_alter(&$form, FormS
       ->get('sbsys_meetings_manifest_path'),
   ];
 }
-
