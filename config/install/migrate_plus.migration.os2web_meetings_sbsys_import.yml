@@ -1,0 +1,83 @@
+id: os2web_meetings_sbsys_import
+migration_tags:
+  - os2web_meetings
+label: 'Meeting import (SBSYS)'
+migration_group: os2web_meetings
+source:
+  plugin: os2web_meetings_directory_sbsys
+  data_fetcher_plugin: file
+  data_parser_plugin: os2web_meetings_simple_xml_array
+  pattern: '/.*\.(xml)/i'
+  item_selector: /Dagsorden
+  track_changes: true
+  data_parser_plugin_simple_array: true
+  fields:
+    - name: agenda_id
+      label: Agenda ID
+      selector: "@DagsordenID"
+    - name: agenda_access
+      label: Agenda access
+      selector: "@Åben"
+    - name: agenda_type
+      label: Agenda type
+      selector: "@Dagsordentype"
+    - name: meeting_id
+      label: Meeting ID
+      selector: "Møde/@MødeID"
+    - name: title
+      label: Meeting title
+      selector: "Møde/@Udvalg"
+    - name: meeting_start_date
+      label: Meeting start date
+      selector: "Møde/@Mødedato"
+    - name: meeting_start_time
+      label: Meeting start time
+      selector: "Møde/@Mødetid"
+    - name: meeting_end_date
+      label: Meeting end date
+      selector: "Møde/@Mødeslutdato"
+    - name: meeting_end_time
+      label: Meeting end time
+      selector: "Møde/@Mødesluttid"
+    - name: committee_id
+      label: Committee ID
+      selector: "Møde/@UdvalgID"
+    - name: committee_name
+      label: Meeting title
+      selector: "Møde/@Udvalg"
+    - name: location_name
+      label: Location name
+      selector: "Møde/@Mødested"
+    - name: bullet_points
+      label: Bullet points
+      selector: "Dagsordenpunkter/Dagsordenpunkt"
+  ids:
+    agenda_id:
+      type: string
+process:
+  type:
+    plugin: default_value
+    default_value: os2web_meetings_meeting
+  title: title
+  field_os2web_m_esdh_id: agenda_id
+  field_os2web_m_meet_id: meeting_id
+  field_os2web_m_type: agenda_type
+  field_os2web_m_start_date:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'Y-m-d\TH:i:s'
+    source: meeting_start_date
+  field_os2web_m_end_date:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'Y-m-d\TH:i:s'
+    source: meeting_end_date
+  field_os2web_m_doc: agenda_document
+  field_os2web_m_committee: committee_target
+  field_os2web_m_location: location_target
+  field_os2web_m_bps: bullet_points_targets
+destination:
+  plugin: entity:node
+migration_dependencies:
+  required: {  }
+  optional: {  }
