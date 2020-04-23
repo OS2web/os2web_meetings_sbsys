@@ -74,7 +74,7 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
     $title = 'Samlet document';
     // There is no reference to HTML file, but we expect it to be in the
     // directory with the following name.
-    $uri = 'Dagsorden.html';
+    $uri = 'dagsorden.html';
 
     return [
       'title' => $title,
