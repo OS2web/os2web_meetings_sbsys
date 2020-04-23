@@ -145,14 +145,12 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
         $canonical_enclosures = $this->convertEnclosuresToCanonical($source_enclosures);
       }
 
-      // Merging enclosures into attachments.
-      $canonical_attachments = array_merge($canonical_attachments, $canonical_enclosures);
-
       $canonical_bullet_points[] = [
         'id' => $id,
         'title' => $title,
         'access' => $access,
         'attachments' => $canonical_attachments,
+        'enclosures' => $canonical_enclosures,
       ];
     }
 
