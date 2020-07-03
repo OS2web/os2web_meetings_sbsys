@@ -4,7 +4,7 @@
 
 The aim of this module is to import meetings from SBSYS ESDH providers.
 
-This modules is highly dependent on  [Os2web Meetings](https://github.com/OS2web/os2web_meetings) module and serves as an implementation of it.
+This module is highly dependent on  [Os2web Meetings](https://github.com/OS2web/os2web_meetings) module and serves as an implementation of it.
 
 ## How does it work
 
