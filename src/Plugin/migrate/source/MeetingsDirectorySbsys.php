@@ -118,6 +118,7 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
 
     foreach ($source_bullet_points as $bullet_point) {
       $id = $bullet_point['@attributes']['DagsordenpunktID'];
+      $bpNumber = $bullet_point['@attributes']['Nummer'];
       $title = $bullet_point['Overskrift'];
       $access = filter_var($bullet_point['@attributes']['Åbent'], FILTER_VALIDATE_BOOLEAN);
 
@@ -147,6 +148,7 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
 
       $canonical_bullet_points[] = [
         'id' => $id,
+        'number' => $bpNumber,
         'title' => $title,
         'access' => $access,
         'attachments' => $canonical_attachments,
