@@ -62,7 +62,13 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
    * {@inheritdoc}
    */
   public function convertEndDateToCanonical(array $source) {
-    $end_date = $source['meeting_end_date'] . ' ' . $source['meeting_end_time'];
+    if (isset($source['meeting_end_date']) && $source['meeting_end_time']) {
+      $end_date = $source['meeting_end_date'] . ' ' . $source['meeting_end_time'];
+    }
+    else {
+      // Reusing start date.
+      $end_date = $source['meeting_start_date'] . ' ' . $source['meeting_start_time'];
+    }
 
     return $this->convertDateToTimestamp($end_date);
   }
@@ -135,7 +141,10 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
       }
 
       // Getting enclosures (files).
-      $source_enclosures = $bullet_point['Bilagsliste']['Bilag'];
+      $source_enclosures = NULL;
+      if (array_key_exists('Bilagsliste', $bullet_point)) {
+        $source_enclosures = $bullet_point['Bilagsliste']['Bilag'] ?? NULL;
+      }
       $canonical_enclosures = [];
       if (is_array($source_enclosures)) {
         // Handling single items.
