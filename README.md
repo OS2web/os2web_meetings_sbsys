@@ -17,7 +17,7 @@ After "translating" each meeting is then processed and eventually imported in th
 Import is handled via Migrate API, which is part of the Drupal 8 core functionality.
 
 ## Additional settings
-Settings are available under ```admin/config/content/os2web-meetings```
+Settings are available under ```admin/config/system/os2web-meetings```
 * **SBSYS Meetings manifests path** - Path to agenda directory.
 
 ## Install
