@@ -171,7 +171,7 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
   /**
    * {@inheritdoc}
    */
-  public function convertAttachmentsToCanonical(array $source_attachments) {
+  public function convertAttachmentsToCanonical(array $source_attachments, $access = TRUE) {
     $canonical_attachments = [];
 
     foreach ($source_attachments as $title => $body) {
@@ -182,7 +182,7 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
         'id' => $id,
         'title' => $title,
         'body' => $body,
-        'access' => TRUE,
+        'access' => $access,
       ];
     }
 
@@ -306,4 +306,17 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function convertParticipantToCanonical(array $source) {
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function convertAgendaIdToCanonical(array $source) {
+    return $source['agenda_id'];
+  }
 }
