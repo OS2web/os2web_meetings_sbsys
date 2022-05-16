@@ -50,7 +50,7 @@ source:
       selector: "Møde/@Mødested"
     - name: bullet_points
       label: Bullet points
-      selector: "Dagsordenpunkter/Dagsordenpunkt"
+      selector: "Dagsordenpunkter"
   ids:
     agenda_id:
       type: string
