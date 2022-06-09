@@ -122,6 +122,9 @@ class MeetingsDirectorySbsys extends MeetingsDirectory {
     $canonical_bullet_points = [];
     $source['bullet_points'] = array_pop($source['bullet_points']);
     $source_bullet_points =$source['bullet_points']['Dagsordenpunkt'];
+    if (array_key_exists('@attributes', $source_bullet_points)) {
+      $source_bullet_points = [$source_bullet_points];
+    }
 
     foreach ($source_bullet_points as $bullet_point) {
       $id = $bullet_point['@attributes']['DagsordenpunktID'];
